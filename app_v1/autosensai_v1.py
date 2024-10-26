@@ -1,6 +1,9 @@
 import streamlit as st
 import os
 
+print("Current working directory:", os.getcwd())
+print("Contents of the current directory:", os.listdir('.'))
+
 def get_response(user_input):
     responses = {
         "hello": "Hi there! How can I help you?",
@@ -14,6 +17,7 @@ st.markdown("<h1 style='text-align: center;'>AutoSensAI</h1>", unsafe_allow_html
 
 # Load PDF manuals from the 'manuals' directory
 manuals_directory = 'manuals'
+print("Manuals directory exists:", os.path.exists(manuals_directory))
 manual_files = [f for f in os.listdir(manuals_directory) if f.endswith('.pdf')]
 
 # Initialize session state for conversation history
