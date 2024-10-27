@@ -16,7 +16,8 @@ st.markdown("<h1 style='text-align: center;'>AutoSensAI</h1>", unsafe_allow_html
 st.write("Current working directory:", os.getcwd())
 st.write("Contents of the current directory:", os.listdir('.'))
 
-manuals_directory = "manuals"
+#manuals_directory = "manuals"
+manuals_directory = os.path.join(os.path.dirname(__file__), 'manuals')
 st.write("Manuals directory exists:", os.path.exists(manuals_directory))
 
 if os.path.exists(manuals_directory):
