@@ -12,20 +12,22 @@ def get_response(user_input):
 # Streamlit app
 st.markdown("<h1 style='text-align: center;'>AutoSensAI</h1>", unsafe_allow_html=True)
 
-# Check the current working directory
-st.write("Current working directory:", os.getcwd())
-st.write("Contents of the current directory:", os.listdir('.'))
+## Check the current working directory
+#st.write("Current working directory:", os.getcwd())
+#st.write("Contents of the current directory:", os.listdir('.'))
 
 #manuals_directory = "manuals"
 manuals_directory = os.path.join(os.path.dirname(__file__), 'manuals')
-st.write("Manuals directory exists:", os.path.exists(manuals_directory))
+#st.write("Manuals directory exists:", os.path.exists(manuals_directory))
 
-if os.path.exists(manuals_directory):
-    manual_files = [f for f in os.listdir(manuals_directory) if f.endswith('.pdf')]
-    st.write("Manual files found:", manual_files)
-else:
-    st.write("No manual files found.")
-    
+#if os.path.exists(manuals_directory):
+#    manual_files = [f for f in os.listdir(manuals_directory) if f.endswith('.pdf')]
+#    st.write("Manual files found:", manual_files)
+#else:
+#    st.write("No manual files found.")
+
+manual_files = [f for f in os.listdir(manuals_directory) if f.endswith('.pdf')]
+
 ## Load PDF manuals from the 'manuals' directory
 #manuals_directory = 'manuals'
 #print("Manuals directory exists:", os.path.exists(manuals_directory))
