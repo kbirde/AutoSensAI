@@ -12,15 +12,18 @@ def get_response_from_llm(question, passage):
     # Combine the question and passage to create a prompt for the LLM
     prompt = f"Answer the following question based on the provided passage:\n\nPassage:\n{passage}\n\nQuestion: {question}\nAnswer:"
 
-    # Send the prompt to the OpenAI API and get the response
-    response = openai.Completion.create(
-        model="gpt-3.5-turbo",  # Change to "gpt-4" if you have access
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=150,  # Adjust as necessary
+    # Use the new ChatCompletion API (note the change from openai.Completion.create to openai.ChatCompletion.create)
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # Use "gpt-4" if you have access
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=150,  # Adjust as needed
         temperature=0.7,
     )
 
-    # Extract the response text
+    # Extract the response content
     return response['choices'][0]['message']['content'].strip()
 
 def extract_text_from_pdf(pdf_url):
